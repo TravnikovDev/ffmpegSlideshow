@@ -48,6 +48,28 @@ describe("createSlideshow", () => {
         sortMethod: "alphabetically",
       },
     },
+    {
+      name: "Random transitions, 1s transition duration, 3s image duration",
+      options: {
+        transition: [
+          "wipeLeft",
+          "swap",
+          "cube",
+          "radial",
+          "angular",
+          "squareswire",
+          "dreamy",
+          "crosszoom",
+          "crosswarp",
+          "circleopen",
+        ], // Or any other transitions
+        transitionDuration: 1,
+        imageDuration: 2,
+        outputFormat: "mp4",
+        outputName: "test_slideshow_random",
+        sortMethod: "alphabetically",
+      },
+    },
     // Add more test cases here
   ];
 

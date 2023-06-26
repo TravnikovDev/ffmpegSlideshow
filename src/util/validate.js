@@ -19,8 +19,8 @@ const DEFAULT_OPTIONS = {
   function validateOptions(options = {}) {
     const finalOptions = { ...DEFAULT_OPTIONS, ...options };
   
-    if (typeof finalOptions.transition !== 'string') {
-      throw new TypeError(`Option 'transition' must be a string, but received ${typeof finalOptions.transition}`);
+    if (!(typeof finalOptions.transition === 'string' ||  Array.isArray(options.transition))) {
+      throw new TypeError(`Option 'transition' must be a string or array, but received ${typeof finalOptions.transition}`);
     }
   
     if (typeof finalOptions.transitionDuration !== 'number' || finalOptions.transitionDuration <= 0) {

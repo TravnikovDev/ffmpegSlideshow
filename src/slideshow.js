@@ -58,14 +58,30 @@ async function createSlideshow(dirPath, options) {
   );
   const clips = await Promise.all(clipPromises);
 
+  const generateRandomTransition = () => {
+    const transitions = validatedOptions.transition;
+    return transitions[Math.floor(Math.random() * transitions.length)];
+  };
+
   // Concatenate the clips with transitions
   await concat({
     output: `${validatedOptions.outputName}.${validatedOptions.outputFormat}`,
     videos: clips,
-    transition: {
-      name: validatedOptions.transition,
-      duration: validatedOptions.transitionDuration * 1000,
-    },
+    transitions: Array.isArray(validatedOptions.transition)
+      ? Array(clips.length - 1)
+          .fill()
+          .map(() => ({
+            name: generateRandomTransition(),
+            duration: validatedOptions.transitionDuration * 1000,
+          }))
+      : null,
+    transition:
+      typeof validatedOptions.transition === "string"
+        ? {
+            name: validatedOptions.transition,
+            duration: validatedOptions.transitionDuration * 1000,
+          }
+        : null,
   });
 
   // Cleanup the temporary directory
