@@ -1,8 +1,9 @@
 {
   "name": "ffmpegslideshow",
   "version": "0.1.0",
-  "description": "ffmpegSlideshow simplifies the creation of visually engaging slideshows with seamless transitions from a collection of images. While ffmpeg's default capabilities allow for basic slideshow creation, it doesn't support transitions, making for a less smooth and less engaging experience. And while ffmpeg-concat provides transition capabilities, it requires a video input. ffmpegSlideshow bridges this gap by combining the strengths of these two libraries, providing an intuitive, simple-to-use wrapper. With ffmpegSlideshow, you can effortlessly convert a folder of images into a dynamic video slideshow, complete with customizable transitions.",
-  "main": "index.js",
+  "description": "An npm package for creating video slideshows from images with custom transitions using ffmpeg",
+  "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
