@@ -30,6 +30,22 @@ slideshow('/path/to/images', options)
   .catch((error) => console.error('Error creating slideshow:', error));
 ```
 
+In addition to defining a single transition for all image transitions, you can also specify an array of transitions to use a different transition for each image pair:
+
+```js
+const options = {
+  transition: ['fade', 'crossfade', 'fadeBlack', 'smpteWipe', 'slide', 'randomDissolve'],
+  transitionDuration: 1,  // in seconds
+  imageDuration: 5,       // in seconds
+  outputFormat: 'mp4',
+  outputName: 'myslideshow'
+};
+
+slideshow('/path/to/images', options)
+  .then(() => console.log('Slideshow created!'))
+  .catch((error) => console.error('Error creating slideshow:', error));
+```
+
 ## API
 
 ### slideshow(path, options)
