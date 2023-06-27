@@ -75,7 +75,7 @@ async function createSlideshow(dirPath, options) {
 
   // Concatenate the clips with transitions
   await concat({
-    output: `${validatedOptions.outputName}.${validatedOptions.outputFormat}`,
+    output: `${dirPath}/${validatedOptions.outputName}.${validatedOptions.outputFormat}`,
     videos: clips,
     transitions: Array.isArray(validatedOptions.transition)
       ? Array(clips.length - 1)

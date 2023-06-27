@@ -2,6 +2,10 @@
 
 ffmpegSlideshow simplifies the creation of visually engaging slideshows with seamless transitions from a collection of images. While ffmpeg's default capabilities allow for basic slideshow creation, it doesn't support transitions, making for a less smooth and less engaging experience. ffmpegSlideshow bridges this gap by providing an intuitive, simple-to-use wrapper. With ffmpegSlideshow, you can effortlessly convert a folder of images into a dynamic video slideshow, complete with customizable transitions.
 
+## Pre-requisites
+
+Make sure you have FFmpeg installed on your machine. If not, please follow the instructions on the [official FFmpeg website](https://ffmpeg.org/download.html) to install it. ffmpegSlideshow relies on FFmpeg to create the slideshow.
+
 ## Installation
 
 To install ffmpegSlideshow, use the following command:
@@ -15,17 +19,18 @@ npm install ffmpegslideshow
 Here is a basic example of how to use ffmpegSlideshow:
 
 ```js
-const slideshow = require('ffmpegslideshow');
+import createSlideshow from 'ffmpegslideshow';
 
 const options = {
   transition: 'fade',
   transitionDuration: 1,  // in seconds
   imageDuration: 5,       // in seconds
   outputFormat: 'mp4',
-  outputName: 'myslideshow'
+  outputName: 'myslideshow',
+  sortMethod: 'creationTime' // Or 'alphabetical'
 };
 
-slideshow('/path/to/images', options)
+createSlideshow('/path/to/images', options)
   .then(() => console.log('Slideshow created!'))
   .catch((error) => console.error('Error creating slideshow:', error));
 ```
@@ -34,7 +39,7 @@ In addition to defining a single transition for all image transitions, you can a
 
 ```js
 const options = {
-  transition: ['fade', 'crossfade', 'fadeBlack', 'smpteWipe', 'slide', 'randomDissolve'],
+  transition: ['wipeLeft', 'swap', 'squareswire', 'crosszoom', 'circleopen'],
   transitionDuration: 1,  // in seconds
   imageDuration: 5,       // in seconds
   outputFormat: 'mp4',
@@ -45,6 +50,8 @@ slideshow('/path/to/images', options)
   .then(() => console.log('Slideshow created!'))
   .catch((error) => console.error('Error creating slideshow:', error));
 ```
+
+whole list of transitions could be found [here](https://gl-transitions.com/gallery)
 
 ## API
 

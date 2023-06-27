@@ -83,7 +83,7 @@ describe("createSlideshow", () => {
         await createSlideshow(dirPath, options);
 
         // Check if the slideshow video was created
-        const videoPath = `${options.outputName}.${options.outputFormat}`;
+        const videoPath = `${dirPath}/${options.outputName}.${options.outputFormat}`;
         const videoExists = await fs
           .access(videoPath)
           .then(() => true)
