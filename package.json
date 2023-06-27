@@ -1,6 +1,6 @@
 {
   "name": "ffmpegslideshow",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An npm package for creating video slideshows from images with custom transitions using ffmpeg",
   "main": "src/index.js",
   "type": "module",
