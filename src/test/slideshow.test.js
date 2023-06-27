@@ -92,7 +92,7 @@ describe("createSlideshow", () => {
         expect(videoExists).toBe(true);
 
         // If you want, you can delete the created video after the test
-        await fs.unlink(videoPath);
+        // await fs.unlink(videoPath);
       },
       30000
     ); // Increase timeout to 30 seconds

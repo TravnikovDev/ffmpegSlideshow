@@ -17,3 +17,6 @@ node_modules/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Ignore test videos
+.mp4
