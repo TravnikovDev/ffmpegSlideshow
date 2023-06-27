@@ -6,6 +6,7 @@ import { promises as fs } from "fs";
 import readImageFiles from "./util/file.js";
 import sort from "./util/sort.js";
 import validateOptions from "./util/validate.js";
+import resizeImages from "./util/resize.js";
 
 /**
  * Generates a video clip from an image using fluent-ffmpeg.
@@ -28,7 +29,14 @@ async function generateClip(imagePath, outputDir, duration) {
       .outputOptions("-c:v libx264")
       .output(outputPath)
       .on("end", () => resolve(outputPath))
-      .on("error", reject)
+      .on("error", function (err, stdout, stderr) {
+        if (err) {
+          console.log(err.message);
+          console.log("stdout:\n" + stdout);
+          console.log("stderr:\n" + stderr);
+          reject("Error");
+        }
+      })
       .run();
   });
 }
@@ -41,8 +49,10 @@ async function generateClip(imagePath, outputDir, duration) {
  * @return {Promise<void>}
  */
 async function createSlideshow(dirPath, options) {
+  // Resize images
+  await resizeImages(dirPath);
   // Read and sort the image files
-  const imageFiles = await readImageFiles(dirPath);
+  const imageFiles = await readImageFiles(path.join(dirPath, "resized"));
   const sortedImageFiles =
     options.sortMethod === "creationTime"
       ? await sort.sortByCreationTime(imageFiles)

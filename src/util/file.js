@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 
 // Supported image formats
-const IMAGE_FORMATS = ['jpeg', 'jpg', 'png', 'gif'];
+const IMAGE_FORMATS = ['jpeg', 'jpg', 'png'];
 
 /**
  * Reads image files from the specified directory.
